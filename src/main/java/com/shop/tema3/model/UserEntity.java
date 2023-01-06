@@ -16,14 +16,6 @@ public class UserEntity {
     private String email;
     private String password;
 
-    public List<RolesEntity> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<RolesEntity> roles) {
-        this.roles = roles;
-    }
-
     private String role;
 
     @ManyToMany
@@ -32,7 +24,10 @@ public class UserEntity {
             joinColumns = @JoinColumn(name = "users_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id")
     )
-    private List<RolesEntity> roles;
+    private List<RoleEntity> roles;
+
+    public UserEntity(String name, String email, String encode) {
+    }
 
     public Long getId() {
         return id;
@@ -72,5 +67,12 @@ public class UserEntity {
 
     public void setRole(String role) {
         this.role = role;
+    }
+    public List<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleEntity> roles) {
+        this.roles = roles;
     }
 }
